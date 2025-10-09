@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
 
-
     @Test(description = "Позитивный сценарий: успешный вход стандартного пользователя")
     public void testSuccessfulLogin() {
         LoginPage login = new LoginPage(driver);
@@ -21,7 +20,6 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(products.isAt(), "Ожидаем страницу Products после логина");
     }
 
-
     @Test(description = "Негативный сценарий: неверные креды")
     public void testInvalidLogin() {
         LoginPage login = new LoginPage(driver);
@@ -32,7 +30,6 @@ public class LoginTests extends BaseTest {
                 error.toLowerCase().contains("username is required") ||
                 error.toLowerCase().contains("epic sadface"), "Ожидаем сообщение об ошибке авторизации");
     }
-
 
     @Test(description = "Негативный сценарий: locked_out_user")
     public void testLockedOutUser() {
