@@ -37,4 +37,8 @@ public class CheckoutPage {
     public boolean isComplete() {
         return wait.until(ExpectedConditions.textToBePresentInElementLocated(completeHeader, "Thank you for your order!"));
     }
+
+    public String getErrorMessage() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h3[data-test='error']"))).getText();
+    }
 }
