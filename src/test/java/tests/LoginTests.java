@@ -6,7 +6,6 @@ import pages.ProductsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
 public class LoginTests extends BaseTest {
 
     @Test(description = "Позитивный сценарий: успешный вход стандартного пользователя")
@@ -14,8 +13,6 @@ public class LoginTests extends BaseTest {
         LoginPage login = new LoginPage(driver);
         login.open();
         login.login("standard_user", "secret_sauce");
-
-
         ProductsPage products = new ProductsPage(driver);
         Assert.assertTrue(products.isAt(), "Ожидаем страницу Products после логина");
     }
