@@ -4,10 +4,21 @@ import pages.LoginPage;
 import pages.ProductsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 
+@Epic("Авторизация")
+@Feature("Вход в систему")
 public class LoginTests extends BaseTest {
 
     @Test(description = "Позитивный сценарий: успешный вход стандартного пользователя")
+    @Description("Проверяем успешный вход стандартного пользователя с корректными данными")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Позитивные сценарии авторизации")
     public void testSuccessfulLogin() {
         LoginPage login = new LoginPage(driver);
         login.open();
@@ -17,6 +28,9 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(description = "Негативный сценарий: неверные креды")
+    @Description("Проверяем обработку неверных учетных данных")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Негативные сценарии авторизации")
     public void testInvalidLogin() {
         LoginPage login = new LoginPage(driver);
         login.open();
@@ -28,6 +42,9 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(description = "Негативный сценарий: locked_out_user")
+    @Description("Проверяем обработку заблокированного пользователя")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Негативные сценарии авторизации")
     public void testLockedOutUser() {
         LoginPage login = new LoginPage(driver);
         login.open();
@@ -38,6 +55,9 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(description = "Performance glitch user: страница товаров загружается (увеличенный таймаут)")
+    @Description("Проверяем работу с пользователем, у которого проблемы с производительностью")
+    @Severity(SeverityLevel.MINOR)
+    @Story("Специальные пользователи")
     public void testPerformanceGlitchUserLoadsProducts() {
         LoginPage login = new LoginPage(driver);
         login.open();
@@ -48,6 +68,9 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(description = "Problem user: проверка наличия ссылок/изображений у товаров (проверка наличия src у img)")
+    @Description("Проверяем работу с пользователем, у которого проблемы с отображением")
+    @Severity(SeverityLevel.MINOR)
+    @Story("Специальные пользователи")
     public void testProblemUserProductImagesVisible() {
         LoginPage login = new LoginPage(driver);
         login.open();
